@@ -26,4 +26,17 @@ defmodule CsvModule do
   def main(csv_file) do
     read_csv(csv_file) |> processing_csv() |> Enum.each(&Customeres.insert(&1))
   end
+
+  def file_export() do
+    datas =
+    Customeres.select_all()
+    |> Enum.map(& "\r\n#{&1.customer_number},#{&1.customer_name},#{&1.credit_score},#{&1.prefectures}")
+
+    data =
+    ["取引先番号,取引先名称,与信スコア,都道府県"] ++ datas
+    |> Enum.join()
+
+    File.open!("取引先データ.csv",[:write])
+    |> IO.binwrite(data)
+  end
 end
