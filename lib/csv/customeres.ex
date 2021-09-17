@@ -19,4 +19,8 @@ defmodule CsvModule.Customeres do
     Customer.changeset(struct, params)
     |> Repo.update()
   end
+
+  def delete(struct) do
+    Repo.delete(struct)
+  end
 end
