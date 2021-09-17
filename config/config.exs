@@ -5,3 +5,5 @@ config :csv_module, Csv.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost"
+
+config :csv_module, ecto_repos: [Csv.Repo]
