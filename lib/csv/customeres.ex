@@ -14,4 +14,9 @@ defmodule CsvModule.Customeres do
     from(c in Customer, where: c.customer_name == ^customer_name)
     |> Repo.all()
   end
+
+  def update(struct, params) do
+    Customer.changeset(struct, params)
+    |> Repo.update()
+  end
 end

@@ -8,10 +8,23 @@ defmodule CsvModule.Customeres.Customer do
     field :prefectures, :string
   end
 
+  @fields [
+    :customer_number,
+    :customer_name,
+    :credit_score,
+    :prefectures
+  ]
+
+  @validate_fields [
+    :customer_number,
+    :customer_name,
+    :prefectures
+  ]
+
   def changeset(struct, params) do
     struct
-    |> Ecto.Changeset.cast(params, [:customer_number, :customer_name, :credit_score, :prefectures])
-    |> Ecto.Changeset.validate_required([:customer_number, :customer_name, :prefectures])
+    |> Ecto.Changeset.cast(params, @fields)
+    |> Ecto.Changeset.validate_required(@validate_fields)
   end
 
 end
